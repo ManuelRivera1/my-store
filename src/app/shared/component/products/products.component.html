@@ -1,0 +1,41 @@
+<div class="container">
+  <button (click)="createNewProduct()">click</button>
+  <button (click)="onShowDetail('1111')">click</button>
+  <p>
+    La cantidad {{ myShoppingCart.length }}
+  </p>
+  <p>
+    Total: ${{ total }}
+  </p>
+  <p>
+    Fecha: {{ today | timeAgo }}
+  </p>
+</div>
+<div class="products--grid">
+  <div class="container">
+    <div class="row row-cols-4">
+    <app-product
+      [product]="product"
+      *ngFor="let product of products"
+      (addedProduct)="onAddToShoppingCart($event)"
+      (ShowProduct)="onShowDetail($event)"
+    ></app-product>
+  </div>
+  <button class="btn btn-info" (click)="onLoadMore()">ver mas</button>
+  </div>
+</div>
+<div class="product-detail" [class.active]="showProducts">
+  <div *ngIf="productChosen">
+    <button (click)="toggleProductDetail()"type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <h1>{{statusDetails}}</h1>
+    <h1>{{productChosen.title}}</h1>
+    <swiper effect="fade" [slidesPerView]="1" [navigation]="true">
+      <ng-template swiperSlide *ngFor="let img of productChosen.images">
+        <img class="swiper-slide" [src]="img" alt="">
+      </ng-template>
+    </swiper>
+    <button class="btn btn-info" (click)="updateProduct()">Update</button>
+    <button class="btn btn-danger" (click)="deleteProduct()">Delete</button>
+
+  </div>
+</div>

@@ -1,0 +1,8 @@
+{
+  "/api/*":{
+    "target" :"https://damp-spire-59848.herokuapp.com/",
+    "secret": true,
+    "LogLevel":"debug",
+    "changeOrigin": true
+  }
+}

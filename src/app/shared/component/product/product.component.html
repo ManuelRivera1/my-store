@@ -1,0 +1,23 @@
+<div class="col text-center border">
+  <a [routerLink]="['/product', product.id]">
+    <app-img
+      *ngIf="product.images.length > 0"
+      [img]="product.images[0]"
+    ></app-img>
+  </a>
+</div>
+<div class="col text-center border">
+  <h2>{{ product.price | currency: "COP " }}</h2>
+  <p>{{ product?.taxes | currency: "COP " }}</p>
+</div>
+<div class="col text-center border">
+  <p appHighLight>{{ product.title | reverse }}</p>
+</div>
+<div class="col text-center border">
+  <button class="btn btn btn-outline-primary m-2" (click)="onAddToCart()">
+    Add cart
+  </button>
+  <!-- <button class="btn btn btn-outline-success"(click)="onShowDetail()">View Details</button> -->
+  <a routerLink="." [queryParams]="{ product: product.id }">detail</a>
+</div>
+<br />
